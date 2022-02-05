@@ -17,7 +17,6 @@
         return false;
     }
 
-    //CHECK ALLOCATION STATUS OF A PARTICULAR STUDENT IN A PARTICULAR VENUE
     function isExist($dbconn, $table, $session, $code, $term, $adNo){
         $sql = "SELECT COUNT(*) AS total FROM $table WHERE session='$session' AND subject_code='$code' AND term='$term' AND adNo='$adNo'";
         $result = $dbconn->query($sql);
