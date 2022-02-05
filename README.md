@@ -6,7 +6,7 @@
 - Login
 - Give admission
 - Upload student(s) / view student / edit student
-- Add staff / view staff / edit staff/ delete staff 
+- Add staff / view staff / edit staff / delete staff 
 - Add subject delete subject
 - Add session / delete session
 - Add class / delete class
@@ -14,7 +14,7 @@
 - Process result and pass to template - result template (not included here)
 
 ### Staff
--login
+- Login
 - view assigned class
 - view class students
 - upload result
