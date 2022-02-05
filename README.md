@@ -11,7 +11,8 @@
 - Add session / delete session
 - Add class / delete class
 - Upload result(s) - CSV
-- Process result and pass to template - result template (not included here)
+- Process single student result 
+- Process entirer class result
 
 ### Staff
 - Login
@@ -21,3 +22,5 @@
 - process student result
 - process class result
 - edit class student
+
+#### Result template (not included here)
