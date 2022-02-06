@@ -3,7 +3,7 @@
     function checkPassport($adNo, $path){
         $adNo = str_replace('/','_',$adNo);
 
-        if(file_exists($path.$adNo.".JPG")){
+        if(file_exists($path.$adNo.".PNG")){
             return true;
         }
         return false;
@@ -11,7 +11,7 @@
 
     function checkStaffPassport($staff, $path){
 
-        if(file_exists($path.$staff.".JPG")){
+        if(file_exists($path.$staff.".PNG")){
             return true;
         }
         return false;

@@ -2,8 +2,9 @@ table{
     font-size: 0.8rem;
 }
 .profileImage {
-    max-width: 240px;
-    max-height: 240px;
+    max-width: 225px;
+    max-height: 225px;
+    background-color: rgb(241,176,174);
     border-radius: 50%;
     border: 5px solid rgb(241,176,174);
 }
