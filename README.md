@@ -1,5 +1,5 @@
 # sms-master
-## A Nigerian base School Management System
+## A Nigeria base School Management System
 
 ## Features
 ### Admin
