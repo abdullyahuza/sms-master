@@ -3,16 +3,26 @@
     function checkPassport($adNo, $path){
         $adNo = str_replace('/','_',$adNo);
 
-        if(file_exists($path.$adNo.".PNG")){
-            return true;
+        if(file_exists($path.$adNo.".JPG")){
+            $ext = pathinfo($path.$adNo.".JPG", PATHINFO_EXTENSION);
+            return $adNo.".".$ext;
+        }
+        else if(file_exists($path.$adNo.".PNG")){
+            $ext = pathinfo($path.$adNo.".PNG", PATHINFO_EXTENSION);
+            return $adNo.".".$ext;   
         }
         return false;
     }
 
     function checkStaffPassport($staff, $path){
 
-        if(file_exists($path.$staff.".PNG")){
-            return true;
+        if(file_exists($path.$staff.".JPG")){
+            $ext = pathinfo($path.$staff.".JPG", PATHINFO_EXTENSION);
+            return $staff.".".$ext;   
+        }
+        else if(file_exists($path.$staff.".PNG")){
+            $ext = pathinfo($path.$staff.".PNG", PATHINFO_EXTENSION);
+            return $staff.".".$ext;
         }
         return false;
     }

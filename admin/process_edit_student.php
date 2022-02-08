@@ -24,8 +24,13 @@
 			$adNo_ = str_replace('/','_',$adNo);
 			$location = "../images/passports/";
 
-            $rename = $adNo_.'.'.'JPG';
 			$passport = $_FILES["passport"]["tmp_name"];
+			$extension = pathinfo($_FILES["passport"]["name"], PATHINFO_EXTENSION);
+			if($extension == "jpg" OR $extension == "JPG"){
+            	$rename = $adNo_."."."JPG";
+			}else{
+            	$rename = $adNo_."."."PNG";
+			}
             move_uploaded_file($passport,$location.$rename);
 		}
 

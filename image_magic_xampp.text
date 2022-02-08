@@ -1,0 +1,13 @@
+sudo apt-get install libmagickwand-dev
+sudo apt-get install libmagickcore-dev
+
+$cd /opt/lampp/bin
+$sudo ./peck install imagick
+
+add to php.ini
+extension=imagick.so
+
+
+http://kireniusdena.blogspot.com/2018/05/how-to-install-imagick-xampp-linux.html
+
+https://community.apachefriends.org/viewtopic.php?t=76417#

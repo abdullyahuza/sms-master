@@ -59,6 +59,7 @@ $success = file_put_contents($destinationPath, $img);
 if (!$success)
     exit(json_encode(['success' => false, 'reason' => 'the server failed in creating the image']));
 
+sleep(2);
 
 $client = new GuzzleHttp\Client();
 $res = $client->post('https://api.remove.bg/v1.0/removebg', [

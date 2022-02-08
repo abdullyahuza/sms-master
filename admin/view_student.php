@@ -75,15 +75,15 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                               $address=$row["address"];
                               $passport = '';
                             } 
-                                if(checkPassport($adNo,'../images/passports/')){
-                                    $passport = str_replace('/','_',$adNo).'.PNG';
+                                if(checkPassport($adNo,'../images/passports/') != FALSE){
+                                    $passport = checkPassport($adNo,'../images/passports/');
                                 }else{
                                     $passport = 'icon.png';
                                 }
                             ?>
                                 <center>
                                     <div>
-                                        <img style="background-color: silver;" class="profileImage" src="../images/passports/<?php echo $passport; ?>" alt="No Passport">
+                                        <img style="background-color: white;" class="profileImage" src="../images/passports/<?php echo $passport; ?>" alt="No Passport">
                                     </div>
                                 </center>
                                 <br>
