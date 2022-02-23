@@ -1,5 +1,6 @@
 <?php 
 include '../functions.php';
-echo checkPassport('TB/22/0001','../images/passports/');
+include '../config/db.php';
 
+echo getMaxAdNo($connection,'2022');
  ?>

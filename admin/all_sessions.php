@@ -46,7 +46,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
     }
 ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -58,11 +58,11 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         

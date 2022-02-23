@@ -1,4 +1,43 @@
 <?php
+    
+    function getPasswordAdmin($dbconn, $admin){
+        $sql = "SELECT password FROM admin WHERE user_name='$admin';";
+        $result = $dbconn->query($sql);
+        $row = mysqli_fetch_assoc($result); 
+        $password = $row['password'];
+
+        return $password;
+    }
+
+    function getPassword($dbconn, $staff){
+        $sql = "SELECT password FROM tbl_teacher WHERE staff_username='$staff';";
+        $result = $dbconn->query($sql);
+        $row = mysqli_fetch_assoc($result); 
+        $password = $row['password'];
+
+        return $password;
+    }
+
+    function getClass($dbconn, $staff){
+        $sql = "SELECT class FROM tbl_teacher WHERE staff_username='$staff';";
+        $result = $dbconn->query($sql);
+        $row = mysqli_fetch_assoc($result); 
+        $class = $row['class'];
+
+        return $class;
+    }
+
+    function getTitle($dbconn, $code){
+        //remove class and term
+        $code = substr($code, 0,-3);
+
+        $sql = "SELECT subject_name FROM add_subject WHERE code='$code';";
+        $result = $dbconn->query($sql);
+        $row = mysqli_fetch_assoc($result); 
+        $title = $row['subject_name'];
+
+        return $title;
+    }
 
     function checkPassport($adNo, $path){
         $adNo = str_replace('/','_',$adNo);
@@ -173,8 +212,25 @@
         }
     }
 
-    function genAdno($year){
+    function getMaxAdNo($dbconn,$year){
+        $sql = "SELECT MAX(adNo) as adNo FROM tbl_student WHERE yAdmitted='$year'";
+        $result = $dbconn->query($sql);
+        $row=mysqli_fetch_array($result);
+        $maxAdNo = $row['adNo'];
+
+        //strip name/year from the adno
+        $maxAdNo = substr($maxAdNo,6);
+        //convert to interger
+        $maxAdNo = intval($maxAdNo);
+        return $maxAdNo;
+    }
+
+    function genAdno($dbconn, $year){
         $num = rand(1,1000);    //1-9, 10-99, 100-999
+
+        $lastAdNo = getMaxAdNo($dbconn, $year);
+        $num = $lastAdNo + 1;
+
         if($num<10){
             $num='000'.$num;   
         }
@@ -185,5 +241,27 @@
             $num = '0'.$num;
         }
         return "TB/".substr($year,-2)."/".$num;
+    }
+
+    function make_hash($string) {
+        try {
+            return password_hash($string, PASSWORD_BCRYPT);
+        } catch (Exception $e) {
+            $this->$e->getMessage();
+            return false;
+        }
+    }
+
+    function un_hash($string, $hash) {
+        try {
+            if (password_verify($string, $hash)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(Exception $e) {
+            $this->$e->getMessage();
+            return false;
+        }
     }
  ?>

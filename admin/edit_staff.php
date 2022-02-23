@@ -27,7 +27,7 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
 }
  ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -39,11 +39,11 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         
@@ -170,7 +170,7 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-end control-label col-form-label">Class</label>
+                                        <label for="class" class="col-sm-3 text-end control-label col-form-label">Class</label>
                                         <div class="col-sm-9">
                                               <select name="class" style="width: 70%;" id="class" required>
                                                 <option value="">Select class</option>
@@ -188,6 +188,14 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label for="email" class="col-sm-3 text-end control-label col-form-label">Reset Password</label>
+                                        <div class="col-sm-9">
+                                            <a href="reset_password.php?staff_username=<?php echo $_GET['staff_username']; ?>"><h5>Reset</h5></a>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <input type="text" name="staff_username" value="<?php echo $_GET['staff_username']; ?>" hidden />
                                 <div class="border-top">
@@ -204,7 +212,7 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
         </div>  
     </div>
 
-    <?php include './includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
     <?php
     }else{
         header("Location: ../error/403.php");

@@ -6,7 +6,7 @@ include '../functions.php';
 if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])){
 ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -18,11 +18,11 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
 
@@ -80,7 +80,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                                                     <thead>
                                                         <tr role="row">
                                                             <th colspan="2">
-                                                                <center><?php echo $class;?> Information</center>
+                                                                <center><h4><?php echo $class;?> Information</h4></center>
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -125,7 +125,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                                                             <td><?php echo $row["fName"]." ".$row["mName"]." ".$row["lName"]; ?></td>
                                                             <td>
                                                                 <center>
-                                                                    <a href="./comfirm_scores.php?class=<?php echo $row["cClass"]; ?>&adNo=<?php echo $row["adNo"]; ?>" class="btn btn-info btn-xs">Process</a>
+                                                                    <a href="./confirm_scores.php?class=<?php echo $row["cClass"]; ?>&adNo=<?php echo $row["adNo"]; ?>" class="btn btn-info btn-xs">Process</a>
                                                                 </center>
                                                             </td>
                                                                   

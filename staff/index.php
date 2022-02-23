@@ -4,7 +4,7 @@ include '../functions.php';
 include '../config/db.php';
 $msg="";
 
-if(isset($_SESSION['user_name'])){
+if(isset($_SESSION['staff_username'])){
     header("Location: dashboard.php");
 }
 
@@ -16,7 +16,7 @@ $password = $_POST['pass'];
 
 if($username && $password){
   
-  $sql= mysqli_query($connection,"SELECT * FROM admin WHERE user_name='".$username."'");
+  $sql= mysqli_query($connection,"SELECT * FROM tbl_teacher WHERE staff_username='".$username."'");
   
   $numrows=(mysqli_num_rows($sql));
   
@@ -26,7 +26,7 @@ if($username && $password){
     while($row=mysqli_fetch_array($sql))
       {
         
-      $dbuser=$row["user_name"];
+      $dbuser=$row["staff_username"];
       $dbpass=$row["password"];
       /* $_SESSION['user']=$row["user_id"];
       $_SESSION['user_name']=$row["user_name"];*/
@@ -37,9 +37,9 @@ if($username && $password){
     if($username==$dbuser)
     {
       
-      if($password==$dbpass)
+      if($password==un_hash($password,$dbpass))
       {
-        $_SESSION['user_name']=$dbuser; 
+        $_SESSION['staff_username']=$dbuser; 
         header("location: dashboard.php");
       
       }else{
@@ -76,8 +76,8 @@ if($username && $password){
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>JizzTech</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.ico">
+    <title>SMS Master</title>
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -6,7 +6,7 @@ include '../functions.php';
 if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])){
 ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -18,11 +18,11 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         
@@ -46,7 +46,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
             <div class="container-fluid">
                 <!-- row -->
                 <div class="row">
-                    <div class="col-md-12" style="margin: 0 auto;">
+                    <div class="col-md-10" style="margin: 0 auto;">
                         <div class="card">
                             <div class="card-body">
                             <?php 
@@ -70,8 +70,8 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                               $class=$row["class"];
                               $passport = '';
                             } 
-                                if(checkStaffPassport($staff_username,'../images/staff/')){
-                                    $passport = $staff_username.'.JPG';
+                                if(checkStaffPassport($staff_username,'../images/staff/') != FALSE){
+                                    $passport = checkPassport($staff_username,'../images/staff/');
                                 }else{
                                     $passport = 'icon.png';
                                 }
@@ -92,7 +92,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td width="10">Firstname</td>
+                                            <td width="15%">Firstname</td>
                                             <td><?php echo $firstname; ?></td>
                                         </tr>
 
@@ -113,12 +113,12 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
                                         <tr>
                                             <td>Email</td>
-                                            <td style="font-size:0.5rem;"><?php echo $email; ?></td>
+                                            <td style="font-size: 0.7rem;"><?php echo $email; ?></td>
                                         </tr>
 
                                         <tr>
                                             <td>Address</td>
-                                            <td style="font-size:0.5rem;"><?php echo $address; ?></td>
+                                            <td><?php echo $address; ?></td>
                                         </tr>
 
 
@@ -155,21 +155,20 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 <center>
-                                                    <a href="edit_staff.php?staff_username=<?php echo $staff_username; ?>" class="btn btn-success btn-sm">
-                                                        update staff Info
+                                                    <a href="edit_staff.php?staff_username=<?php echo $staff_username; ?>" class="btn btn-success btn-xs">
+                                                        update Staff
                                                     </a>
                                                 </center>
-                                            </th>
-
-                                            <th>
+                                            </td>
+                                            <td>
                                                 <center>
-                                                    <a href="delete_staff.php?staff_username=<?php echo $staff_username; ?>" class="btn btn-danger btn-sm">
-                                                        Delete this staff
+                                                    <a href="delete_staff.php?staff_username=<?php echo $staff_username; ?>" class="btn btn-danger btn-xs">
+                                                        Delete staff
                                                     </a>
                                                 </center>
-                                            </th>
+                                            </td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -183,7 +182,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
         </div>  
     </div>
 
-    <?php include './includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
     <?php
     }else{
         header("Location: ../error/403.php");

@@ -22,9 +22,11 @@
 		}
 
 		if(count($resultArr)>0){
+			$i=1;
 			foreach($resultArr as $subject){
 				$output .= "
 					<tr>
+						<td>".$i."</td>
 						<td>".$subject['subject_code']."</td>
 						<td>".$subject['subject_name']."</td>
 						<td>".$subject['ca1']."</td>
@@ -33,6 +35,7 @@
 						<td>".$subject['total']."</td>
 					</tr>
 				";
+				$i++;
 			}
 			echo $output;
 		}

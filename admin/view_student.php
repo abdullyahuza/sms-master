@@ -6,7 +6,7 @@ include '../functions.php';
 if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])){
 ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -18,11 +18,11 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         
@@ -166,7 +166,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
                                         <tr>
                                             <th>
                                                 <center>
-                                                    <a href="edit_student.php?adNo=<?php echo $adNo; ?>" class="btn btn-success btn-sm">
+                                                    <a href="edit_student.php?adNo=<?php echo $adNo; ?>" class="btn btn-success btn-xs">
                                                         Edit this student
                                                     </a>
                                                 </center>
@@ -174,7 +174,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
                                             <th>
                                                 <center>
-                                                    <a href="delete_student.php?adNo=<?php echo $adNo; ?>" class="btn btn-danger btn-sm">
+                                                    <a href="delete_student.php?adNo=<?php echo $adNo; ?>" class="btn btn-danger btn-xs">
                                                         Delete this student
                                                     </a>
                                                 </center>
@@ -192,7 +192,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
         </div>  
     </div>
 
-    <?php include './includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
     <?php
     }else{
         header("Location: ../error/403.php");

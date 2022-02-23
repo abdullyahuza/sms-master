@@ -12,8 +12,8 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
         $firstname=mysqli_real_escape_string($connection, $_POST['fname']);
         $lastname=mysqli_real_escape_string($connection, $_POST['lname']);
         $username=strtolower($lastname.$firstname);
-
-        $sql1 = mysqli_query($connection,"INSERT INTO tbl_teacher(fName,lName,staff_username) VALUES('$firstname','$lastname','$username')");  
+        $password=make_hash(mysqli_real_escape_string($connection, $_POST['lname']));
+        $sql1 = mysqli_query($connection,"INSERT INTO tbl_teacher(fName,lName,staff_username,password) VALUES('$firstname','$lastname','$username','$password')");  
         
          if($sql1){
             $msg="<p class='alert alert-success'>Teacher Added.</p>";
@@ -23,7 +23,7 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
     }
 ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -35,11 +35,11 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         

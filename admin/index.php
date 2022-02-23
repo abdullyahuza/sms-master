@@ -37,7 +37,7 @@ if($username && $password){
     if($username==$dbuser)
     {
       
-      if($password==$dbpass && isAdmin($connection, $dbuser))
+      if($password==un_hash($password,$dbpass) && isAdmin($connection, $dbuser))
       {
         $_SESSION['user_name']=$dbuser; 
         header("location: dashboard.php");
@@ -76,8 +76,8 @@ if($username && $password){
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>JizzTech</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.ico">
+    <title>SMS Master</title>
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

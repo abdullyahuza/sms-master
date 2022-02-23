@@ -31,7 +31,7 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
 }
  ?>
 
-<?php include './includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 <body>
     <!-- preloader -->
     <div class="preloader">
@@ -43,11 +43,11 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
 
     <!-- main -->
     <div id="main-wrapper">
-        <?php include './includes/nav.php'; ?>
+        <?php include './includes/admin-nav.php'; ?>
         <!-- Sidebar -->
         <aside class="left-sidebar" data-sidebarbg="skin5">
             <div class="scroll-sidebar">
-                <?php include'admin_sidebar.php'; ?>
+                <?php include './includes/admin_sidebar.php'; ?>
             </div>
         </aside>
         
@@ -234,7 +234,7 @@ while($row = mysqli_fetch_array($query,MYSQLI_ASSOC)){
         </div>  
     </div>
 
-    <?php include './includes/footer.php'; ?>
+    <?php include '../includes/footer.php'; ?>
     <?php
     }else{
         header("Location: ../error/403.php");
