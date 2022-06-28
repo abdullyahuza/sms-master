@@ -6,7 +6,6 @@ include '../functions.php';
 if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])){
 ?>
 <?php 
-require_once('../config/db.php');
 $adNo=$_GET["adNo"];
 $query = mysqli_query($connection, "SELECT * FROM tbl_student WHERE adNo='$adNo'");
 $rowCount = mysqli_num_rows($query);

@@ -9,40 +9,45 @@ if(isset($_SESSION['user_name']) && isAdmin($connection, $_SESSION['user_name'])
 
     if (isset($_POST['done'])) {
 
-    $session=$_POST['session'];
+        $session=$_POST['session'];
 
-    $sql1 = mysqli_query($connection,"INSERT INTO session(session) VALUES('$session')");  
-       
-     if($sql1){
-        //create session table
-        $session = str_replace('/','_',$session);
-        $session = "sesh".$session;
-        $sessionTable = "CREATE TABLE $session (
-        `id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        `session` VARCHAR(20) NOT NULL,
-        `subject_code` VARCHAR(15) NOT NULL,
-        `subject_name` VARCHAR(50) NOT NULL,
-        `class` VARCHAR(50) NOT NULL,
-        `term` INT(10) NOT NULL,
-        `adNo` VARCHAR(20) NOT NULL,
-        `ca1` INT(5),
-        `ca2` INT(5),
-        `exams` INT(5),
-        `total` INT(5),
-        FOREIGN KEY (session) REFERENCES session(session),
-        FOREIGN KEY (term) REFERENCES tbl_term(term_id),
-        FOREIGN KEY (adNo) REFERENCES tbl_student(adNo) ON DELETE CASCADE,
-        FOREIGN KEY (subject_code) REFERENCES tbl_subject(subject_code) ON DELETE CASCADE,
-        CONSTRAINT  UNIQUE INDEX unique_index (adno,subject_code,class,session,term)
-        );";
-        
-        if (mysqli_query($connection, $sessionTable)) {
-            $msg="<p id='msg' class='alert alert-success'>Class Added.</p>";
+        if(!itExist($connection, 'session', 'session', $session)){
+            $sql1 = mysqli_query($connection,"INSERT INTO session(session) VALUES('$session')");  
+            if($sql1){
+               //create session table
+               $session = str_replace('/','_',$session);
+               $session = "sesh".$session;
+               $sessionTable = "CREATE TABLE $session (
+               `id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+               `session` VARCHAR(20) NOT NULL,
+               `subject_code` VARCHAR(15) NOT NULL,
+               `subject_name` VARCHAR(50) NOT NULL,
+               `class` VARCHAR(50) NOT NULL,
+               `term` INT(10) NOT NULL,
+               `adNo` VARCHAR(20) NOT NULL,
+               `ca1` INT(5),
+               `ca2` INT(5),
+               `exams` INT(5),
+               `total` INT(5),
+               FOREIGN KEY (session) REFERENCES session(session),
+               FOREIGN KEY (term) REFERENCES tbl_term(term_id),
+               FOREIGN KEY (adNo) REFERENCES tbl_student(adNo) ON DELETE CASCADE,
+               FOREIGN KEY (subject_code) REFERENCES tbl_subject(subject_code) ON DELETE CASCADE,
+               CONSTRAINT  UNIQUE INDEX unique_index (adno,subject_code,class,session,term)
+               );";
+               
+               if (mysqli_query($connection, $sessionTable)) {
+                   $msg="<p id='msg' class='alert alert-success'>Session Added.</p>";
+               }
+
+            }else{
+               $msg="<p class='alert alert-danger'>Something went wrong</p>";
+            }
         }
-
-     }else{
-        $msg="<p class='alert alert-danger'>Something went wrong</p>";
-     }
+        else{
+            $msg="<p class='alert alert-danger'>Already exist</p>";
+        }
+     
     }
 ?>
 
