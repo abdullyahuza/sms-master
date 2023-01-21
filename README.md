@@ -12,7 +12,7 @@
 - Add class / delete class
 - Upload result(s) - CSV
 - Process single student result 
-- Process entirer class result
+- Process entire class result
 
 ### Staff
 - Login
